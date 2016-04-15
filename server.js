@@ -36,19 +36,40 @@ app.get('/', function(req, res) {
 // Setup sample user
 app.get('/setup', function(req, res) {
   // create a sample user
+  var tetratec = new System({ 
+    company: 'Tetratec',
+    address: '1 Tetra Str, Garsfontein, Pretoria',
+    contact_number: '012 998 5555',
+    email: 'coetzeel@live.co.za'
+  });
+
+  // save the sample user
+  tetratec.save(function(err, system) {
+    if (err) throw err;
+
+    console.log('System saved successfully');
+    res.json({ success: true, system });
+  });
+
+/*
+  // create a sample user
   var nick = new User({ 
-    name: 'Nick Cerminara', 
+    name: 'Lehan',
+    surname: 'Coetzee',
+    email: 'coetzeel@live.co.za',
     password: 'password',
-    admin: true 
+    admin: true,
+    system_id: '' 
   });
 
   // save the sample user
   nick.save(function(err) {
     if (err) throw err;
-
     console.log('User saved successfully');
     res.json({ success: true });
   });
+*/
+
 });
 
 // API ROUTES -------------------

@@ -7,5 +7,8 @@ var Schema = mongoose.Schema;
 
 // set up a mongoose model and pass it using module.exports
 module.exports = mongoose.model('Video', new Schema({ 
-    type: String // To be defined, thinking something like 0 for the day video log, 1 for the event compilation for the day etc.
+    type: String, // 0 = day video log, 1 = event compilation
+    date: { type: Date, default: Date.now },
+    file_location: String,
+    system_id: String
 }));

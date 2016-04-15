@@ -36,6 +36,20 @@ app.get('/', function(req, res) {
 
 // Setup sample user
 app.get('/setup', function(req, res) {
+
+  var video = new Video({  
+    type: "0", // 0 = day video log, 1 = event compilation
+    file_location: "/videos/day_log/04_13_2016_571145b08305142aaa37d074.avi",
+    system_id: "571145b08305142aaa37d074"	
+  });
+
+  video.save(function(err, video) {
+    if (err) throw err;
+    console.log('User saved successfully');
+    res.json(video);
+  });	
+
+/*
   var company = new Company({  
     company: 'Tetratec',
     address: '1 Tetra str, Garsfontein, Pretoria, 0081',
@@ -50,7 +64,7 @@ app.get('/setup', function(req, res) {
     res.json(company);
   });	  
 
-/*
+
   system.save(function(err, system) {
     if (err) throw err;
     console.log('User saved successfully');

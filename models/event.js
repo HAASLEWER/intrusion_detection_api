@@ -10,5 +10,5 @@ module.exports = mongoose.model('Event', new Schema({
     system_id: String,
     video_id: String,
     type: String,
-    time_occurred: Timestamp
+    date_time_occurred: { type: Date, default: Date.now }
 }));

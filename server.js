@@ -10,6 +10,9 @@ var mongoose    = require('mongoose');
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
 var config = require('./config.js'); // get our config file
 var User   = require('./models/user'); // get our mongoose model
+var System = require('./models/system'); // get our mongoose model
+var Event  = require('./models/event'); // get our mongoose model
+var Video  = require('./models/video'); // get our mongoose model
     
 // =======================
 // configuration =========
@@ -35,6 +38,7 @@ app.get('/', function(req, res) {
 
 // Setup sample user
 app.get('/setup', function(req, res) {
+/*
   // create a sample user
   var tetratec = new System({ 
     company: 'Tetratec',
@@ -50,8 +54,8 @@ app.get('/setup', function(req, res) {
     console.log('System saved successfully');
     res.json(system);
   });
+*/
 
-/*
   // create a sample user
   var nick = new User({ 
     name: 'Lehan',
@@ -68,7 +72,7 @@ app.get('/setup', function(req, res) {
     console.log('User saved successfully');
     res.json({ success: true });
   });
-*/
+
 
 });
 
@@ -82,7 +86,7 @@ apiRoutes.post('/authenticate', function(req, res) {
 
   // find the user
   User.findOne({
-    name: req.body.name
+    email: req.body.email
   }, function(err, user) {
 
     if (err) throw err;

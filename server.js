@@ -36,16 +36,28 @@ app.get('/', function(req, res) {
 
 // Setup sample user
 app.get('/setup', function(req, res) {
-  var system = new System({  
+  var company = new Company({  
+    company: 'Tetratec',
+    address: '1 Tetra str, Garsfontein, Pretoria, 0081',
+    contact_number: '012 998 1234',
+    email: 'coetzeel@live.co.za',
+    system_id: '571145b08305142aaa37d074'  	
   });
 
-  // save the sample user
+  company.save(function(err, company) {
+    if (err) throw err;
+    console.log('User saved successfully');
+    res.json(company);
+  });	  
+
+/*
   system.save(function(err, system) {
     if (err) throw err;
     console.log('User saved successfully');
     res.json(system);
+    // 571145b08305142aaa37d074
   });	
-/*
+
   // create a sample user
   var nick = new User({ 
     name: 'Lehan',

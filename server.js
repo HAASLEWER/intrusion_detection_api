@@ -1,22 +1,20 @@
-// =======================
-// get the packages we need ============
-// =======================
+// Packages
 var express     = require('express');
 var app         = express();
 var bodyParser  = require('body-parser');
 var morgan      = require('morgan');
 var mongoose    = require('mongoose');
-
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
+
+// Local dependencies
 var config = require('./config.js'); // get our config file
 var User   = require('./models/user'); // get our mongoose model
 var System = require('./models/system'); // get our mongoose model
+var Company = require('./models/company'); // get our mongoose model
 var Event  = require('./models/event'); // get our mongoose model
 var Video  = require('./models/video'); // get our mongoose model
     
-// =======================
-// configuration =========
-// =======================
+// configuration
 var port = process.env.PORT || 8080; // used to create, sign, and verify tokens
 mongoose.connect(config.database); // connect to database
 app.set('superSecret', config.secret); // secret variable
@@ -38,24 +36,16 @@ app.get('/', function(req, res) {
 
 // Setup sample user
 app.get('/setup', function(req, res) {
-/*
-  // create a sample user
-  var tetratec = new System({ 
-    company: 'Tetratec',
-    address: '1 Tetra Str, Garsfontein, Pretoria',
-    contact_number: '012 998 5555',
-    email: 'coetzeel@live.co.za'
+  var system = new System({  
   });
 
   // save the sample user
-  tetratec.save(function(err, system) {
+  system.save(function(err, system) {
     if (err) throw err;
-
-    console.log('System saved successfully');
+    console.log('User saved successfully');
     res.json(system);
-  });
-*/
-
+  });	
+/*
   // create a sample user
   var nick = new User({ 
     name: 'Lehan',
@@ -72,8 +62,7 @@ app.get('/setup', function(req, res) {
     console.log('User saved successfully');
     res.json({ success: true });
   });
-
-
+*/
 });
 
 // API ROUTES -------------------
@@ -163,9 +152,10 @@ apiRoutes.get('/users', function(req, res) {
   });
 });   
 
-// route to show a random message (GET http://localhost:8080/api/)
-
-// route to return all users (GET http://localhost:8080/api/users)
+// route to return specific user (GET http://localhost:8080/api/users/{id})
+apiRoutes.get('/users/:id', function(req, res) {
+  // TO DO
+});   
 
 // apply the routes to our application with the prefix /api
 app.use('/api', apiRoutes);

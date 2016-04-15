@@ -48,7 +48,7 @@ app.get('/setup', function(req, res) {
     if (err) throw err;
 
     console.log('System saved successfully');
-    res.json({ success: true, system });
+    res.json(system);
   });
 
 /*

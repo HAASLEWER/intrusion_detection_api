@@ -8,8 +8,8 @@ var morgan      = require('morgan');
 var mongoose    = require('mongoose');
 
 var jwt    = require('jsonwebtoken'); // used to create, sign, and verify tokens
-var config = require('./config'); // get our config file
-var User   = require('./app/models/user'); // get our mongoose model
+var config = require('./config.js'); // get our config file
+var User   = require('./models/user'); // get our mongoose model
     
 // =======================
 // configuration =========

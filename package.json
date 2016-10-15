@@ -18,9 +18,13 @@
   "homepage": "https://github.com/HAASLEWER/intrusion_detection_api#readme",
   "dependencies": {
     "body-parser": "^1.15.0",
+    "cors": "^2.8.1",
     "express": "^4.13.4",
+    "jsonschema": "^1.1.0",
     "jsonwebtoken": "^5.7.0",
+    "mongodb": "^2.2.10",
     "mongoose": "^4.4.12",
-    "morgan": "^1.7.0"
+    "morgan": "^1.7.0",
+    "underscore": "^1.8.3"
   }
 }
